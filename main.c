@@ -13,7 +13,7 @@
 #include "driverlib/timer.h"
 
 uint32_t ui32Status;
-uint8_t mask;
+
 #define COUNTER_CARD_CAN_ID        0x0200
 #define PULSE_WIDTH_MS   120
 static uint8_t sRXBufCounter[8];
@@ -42,7 +42,7 @@ static volatile bool counter_update_flag = false;
 //}
 void Update_GPIO_From_CAN(uint8_t byte0)
 {
-     mask = 0;
+    uint8_t mask = 0;
 
     if (byte0 & (1 << 0)) mask |= GPIO_PIN_0;   // SOS
     if (byte0 & (1 << 1)) mask |= GPIO_PIN_1;   // Brake
